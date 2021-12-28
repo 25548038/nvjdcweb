@@ -130,99 +130,72 @@
                 </el-col>
               </el-row>
 
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'xdd'">
-                <el-col>
-                  <span class="elabe">你的QQ</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'xdd'">
-                <el-col>
-                  <el-input
-                    style="max-width: 260px"
-                    v-model="QQ"
-                    placeholder="QQ"
-                    prefix-icon="el-icon-chat-round"
-                  />
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <span class="elabe">你的手机号码</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <el-input
-                    style="max-width: 260px"
-                    v-model="phone"
-                    placeholder="Phone"
-                    prefix-icon="el-icon-mobile-phone"
-                  />
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <span class="elabe">验证码</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <el-input
-                    v-model="code"
-                    style="max-width: 150px"
-                    placeholder="Code"
-                    prefix-icon="el-icon-lock"
-                  />
-                  <el-button
-                    type="success"
-                    v-show="isShow"
-                    @click="GetSMSCode"
-                    plain
-                    style="width: 110px"
-                    >获取验证码</el-button
-                  >
-                  <el-button
-                    type="success"
-                    v-show="!isShow"
-                    plain
-                    style="width: 110px"
-                    disabled
-                    >{{ Codetime }}秒后重发</el-button
-                  >
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'ql'">
-                <el-col>
-                  <span class="elabel">服务器</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'ql'">
-                <el-col>
-                  <el-select
-                    v-model="optionsvlue"
-                    placeholder="Select"
-                    style="width: 100%; max-width: 260px"
-                    @change="valuechange"
-                  >
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    >
-                      <span style="float: left">{{ item.label }}</span>
-                      <span
-                        style="
-                          float: right;
-                          color: var(--el-text-color-secondary);
-                          font-size: 13px;
-                        "
-                        >{{ item.count }}</span
-                      >
-                    </el-option>
-                  </el-select>
-                </el-col>
-              </el-row>
+              <el-form label-position="top">
+                  <el-form-item label="你的QQ" v-if="uploadtype === 'xdd'">
+                     <el-input
+                        style="max-width: 260px"
+                        v-model="QQ"
+                        placeholder="QQ"
+                        prefix-icon="el-icon-chat-round"
+                        />
+                  </el-form-item>
+                  <el-form-item label="你的手机号码">
+                     <el-input
+                        style="max-width: 260px"
+                        v-model="phone"
+                        placeholder="Phone"
+                        prefix-icon="el-icon-mobile-phone"
+                        />
+                  </el-form-item>
+                  <el-form-item label="验证码">
+                     <el-input
+                        v-model="code"
+                        style="max-width: 140px;margin-right: 10px;"
+                        placeholder="Code"
+                        prefix-icon="el-icon-lock"
+                        />
+                     <el-button
+                        type="success"
+                        v-show="isShow"
+                        @click="GetSMSCode"
+                        plain
+                        style="width: 110px"
+                     >获取验证码</el-button>
+                     <el-button
+                        type="success"
+                        v-show="!isShow"
+                        plain
+                        style="width: 110px"
+                        disabled
+                     >{{ Codetime }}秒后重发</el-button>
+                  </el-form-item>
+                  <el-form-item label="服务器" v-if="uploadtype === 'ql'">
+                     <el-select
+                        v-model="optionsvlue"
+                        placeholder="Select"
+                        style="width: 100%; max-width: 260px"
+                        @change="valuechange"
+                        >
+                        <el-option
+                           v-for="item in options"
+                           :key="item.value"
+                           :label="item.label"
+                           :value="item.value"
+                        >
+                           <span style="float: left">{{ item.label }}</span>
+                           <span
+                              style="
+                              float: right;
+                              color: var(--el-text-color-secondary);
+                              font-size: 13px;
+                              "
+                              >{{ item.count }}</span
+                           >
+                        </el-option>
+                        </el-select>
+                  </el-form-item>
+               </el-form>
+
               <el-button type="primary" size="medium" round @click="Login"
                 >登录</el-button
               >
@@ -237,68 +210,49 @@
                   <el-tag type="success" >WSKEY容量:{{ WSKEYCount }}</el-tag>
                 </el-col>
               </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <span class="elabe">WSKEY</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <el-input
-                    style="max-width: 260px"
-                    v-model="wskey"
-                    placeholder="wskey"
-                    prefix-icon="el-icon-edit"
-                  />
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <span class="elabe">备注</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete">
-                <el-col>
-                  <el-input
-                    v-model="remarks"
-                    style="max-width: 260px"
-                    placeholder="remarks"
-                    prefix-icon="el-icon-lock"
-                  />
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'ql'">
-                <el-col>
-                  <span class="elabel">服务器</span>
-                </el-col>
-              </el-row>
-              <el-row class="demo-autocomplete" v-show="uploadtype === 'ql'">
-                <el-col>
-                  <el-select
-                    v-model="optionsvlue"
-                    placeholder="Select"
-                    style="width: 100%; max-width: 260px"
-                    @change="valuechange"
-                  >
-                    <el-option
-                      v-for="item in options"
-                      :key="item.value"
-                      :label="item.label"
-                      :value="item.value"
-                    >
-                      <span style="float: left">{{ item.label }}</span>
-                      <span
-                        style="
-                          float: right;
-                          color: var(--el-text-color-secondary);
-                          font-size: 13px;
-                        "
-                        >{{ item.count }}</span
-                      >
-                    </el-option>
-                  </el-select>
-                </el-col>
-              </el-row>
+              <el-form label-position="top">
+                  <el-form-item label="WSKEY">
+                     <el-input
+                     style="max-width: 260px"
+                     v-model="wskey"
+                     placeholder="wskey"
+                     prefix-icon="el-icon-edit"
+                     />
+                  </el-form-item>
+                  <el-form-item label="备注">
+                     <el-input
+                        v-model="remarks"
+                        style="max-width: 260px"
+                        placeholder="remarks"
+                        prefix-icon="el-icon-lock"
+                        />
+                  </el-form-item>
+                  <el-form-item label="服务器" v-if="uploadtype === 'ql'">
+                     <el-select
+                        v-model="optionsvlue"
+                        placeholder="Select"
+                        style="width: 100%; max-width: 260px"
+                        @change="valuechange"
+                        >
+                        <el-option
+                           v-for="item in options"
+                           :key="item.value"
+                           :label="item.label"
+                           :value="item.value"
+                        >
+                           <span style="float: left">{{ item.label }}</span>
+                           <span
+                              style="
+                              float: right;
+                              color: var(--el-text-color-secondary);
+                              font-size: 13px;
+                              "
+                              >{{ item.count }}</span
+                           >
+                        </el-option>
+                        </el-select>
+                  </el-form-item>
+               </el-form>
               <el-button type="primary" size="medium" @click="UploadWSKEYS">上传 </el-button>
             </el-tab-pane>
           </el-tabs>
@@ -307,7 +261,7 @@
     </el-col>
   </el-row>
 </template>
-<style>
+<style lang="scss">
 .elabe {
   font-size: var(--el-font-size-base);
 }
@@ -455,6 +409,13 @@
 
 .refreshIcon:hover {
   color: #6c757d;
+}
+
+.el-form {
+   .el-form-item__label {
+      text-align: center;
+      padding: 0;
+   }
 }
 </style>
 <script>

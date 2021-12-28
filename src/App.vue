@@ -9,7 +9,7 @@
  
 </template>
 <script>
-import {  onMounted,reactive, toRefs } from 'vue'
+import { reactive, toRefs } from 'vue'
 import Header from '@/components/Header.vue'
 import { getQLTitle} from '@/api/index'
 import zhCn from 'element-plus/es/locale/lang/zh-cn'

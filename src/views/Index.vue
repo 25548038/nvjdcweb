@@ -164,9 +164,6 @@ import { getUserInfoAPI, Upremarksapi, delAccountAPI } from "@/api/index";
 import { ElMessage} from "element-plus";
 import Clipboard from "clipboard";
 export default {
-  components: {
-    ElMessage
-  },
   setup() {
     const router = useRouter();
 

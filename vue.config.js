@@ -17,7 +17,6 @@ module.exports = {
 		// 移除 prefetch 插件
 		config.plugins.delete('prefetch')
 		config.plugins.delete('preload')
-
 	},
 	productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
 	configureWebpack: {
@@ -34,7 +33,7 @@ module.exports = {
 				test: /\.(js|css)(\?.*)?$/i, 
 				threshold: 1024, // 只有大小大于该值的资源会被处理 10240
 				deleteOriginalAssets: false // 删除原文件true=删
-			  }),
+			}),
 			AutoImport({
 				resolvers: [ElementPlusResolver()]
 			}),
@@ -42,7 +41,6 @@ module.exports = {
 				resolvers: [ElementPlusResolver()]
 			}),
 		],
-
 	}
 
 }
